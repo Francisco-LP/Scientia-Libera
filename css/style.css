@@ -1,0 +1,260 @@
+:root {
+    --bg-color: #080808;
+    --accent-color: #D4AF37;
+    --text-color: #E0E0E0;
+    --card-bg: #121212;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    background-color: var(--card-bg);
+    padding: 40px 0;
+    /* Un poco más de espacio interno */
+    text-align: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    /* Añade profundidad */
+    margin-bottom: 20px;
+    /* Separa físicamente el header del contenido principal */
+}
+
+.logo {
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.tagline {
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+main {
+    flex-grow: 1;
+    padding: 60px 20px;
+    /* Aumentamos de 40px a 60px el espacio superior e inferior */
+    max-width: 1200px;
+    /* Aseguramos que no se pegue a los bordes en pantallas gigantes */
+    margin: 0 auto;
+    /* Lo centramos horizontalmente */
+    width: 100%;
+}
+
+/* Base View Transition */
+.view-transition {
+    transition: opacity var(--transition-speed) ease-in-out;
+    opacity: 1;
+}
+
+.view-transition.fade-out {
+    opacity: 0;
+}
+
+/* Grid Layout */
+.articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+@media (min-width: 768px) {
+    .articles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .articles-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.card-img-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.card-category {
+    color: var(--accent-color);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.card-summary {
+    color: #bbb;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-meta {
+    font-size: 0.8rem;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+/* Article View */
+.article-view {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.back-btn {
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.article-header {
+    margin-bottom: 30px;
+}
+
+.article-category {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.article-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .article-title {
+        font-size: 3.5rem;
+    }
+}
+
+.article-meta {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.article-hero-img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+
+.article-body {
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.article-body p {
+    margin-bottom: 20px;
+}
+
+.article-body h2 {
+    font-family: var(--font-heading);
+    color: var(--text-color);
+    margin: 40px 0 20px;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #666;
+    font-size: 0.9rem;
+}
